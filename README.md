@@ -6,13 +6,15 @@
 
 交互式打卡平台位于 [`docs/`](docs/README.md)，包含阶段导航、42 个任务、每日打卡、连续学习、测验、项目与知乎文章看板，以及进度数据导入导出。
 
+在线访问：[AI Path · 企业 AI 应用工程师成长路径](https://wzxddm.github.io/enterprise-ai-learning-path/)
+
 本地启动：
 
 ```bash
 python3 -m http.server 4173
 ```
 
-然后访问 `http://127.0.0.1:4173/docs/`。独立发布说明见 [DEPLOY.md](DEPLOY.md)。
+然后访问 `http://127.0.0.1:4173/docs/`。发布说明见 [DEPLOY.md](DEPLOY.md)。
 
 建议每周投入 8～12 小时，按照下面的顺序推进：
 
