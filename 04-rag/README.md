@@ -15,17 +15,14 @@
 
 ## 核心资料
 
-### 网站与官方文档
+全部为中文，严格按顺序学习：
 
-- [Sentence Transformers](https://www.sbert.net/)
-- [FAISS](https://github.com/facebookresearch/faiss)
-- [Qdrant Documentation](https://qdrant.tech/documentation/)
-- [LlamaIndex Documentation](https://docs.llamaindex.ai/)
-- [LangChain RAG Tutorial](https://python.langchain.com/docs/tutorials/rag/)
+1. [Datawhale：动手学大模型应用开发](https://datawhalechina.github.io/llm-universe/)：只学 Embedding、文档切分、向量检索、RAG 和基础评测。
+2. [Milvus 中文官方文档](https://milvus.io/docs/zh/overview.md)：学习向量、Collection、索引、相似度、元数据过滤和部署概念。
+3. [书生浦语：InternLM + LlamaIndex RAG 实践](https://github.com/InternLM/Tutorial)：只完成 RAG 关卡。
+4. [茴香豆：企业级知识助手实践（简体中文）](https://github.com/InternLM/HuixiangDou/blob/main/README_zh.md)：完成自己的阶段项目后再作为拓展阅读。
 
-### 视频课程
-
-- [Full Stack Deep Learning：LLM Bootcamp](https://fullstackdeeplearning.com/llm-bootcamp/)
+每份资料的难度与产出见[七阶段中文资料学习顺序](../resources/chinese-roadmap.md)。
 
 ## 实现顺序
 

@@ -28,6 +28,8 @@ python3 -m http.server 4173
 → 评测、部署与性能优化
 ```
 
+所有必学资料均为中文，并已按阶段、难度和产出排序。统一入口见[七阶段中文资料学习顺序](resources/chinese-roadmap.md)，不要跨阶段囤课。
+
 ## 目录
 
 | 阶段 | 周数 | 主题 | 主要产出 |
@@ -39,7 +41,8 @@ python3 -m http.server 4173
 | [阶段四：RAG](04-rag/README.md) | 10～12 | Embedding、检索、重排、引用 | 文档知识库 |
 | [阶段五：Agent](05-agent/README.md) | 13～14 | Tool Calling、状态机、MCP、安全 | 代码仓库 Agent |
 | [阶段六：微调与对齐](06-finetuning-alignment/README.md) | 15～17 | SFT、LoRA、QLoRA、DPO | LoRA 微调实验 |
-| [阶段七：评测与部署](07-evaluation-deployment/README.md) | 18～20 | 评测集、vLLM、量化、性能 | 评测与部署报告 |
+| [阶段七：评测与部署](07-evaluation-deployment/README.md) | 18～20 | 评测集、LMDeploy、量化、性能 | 评测与部署报告 |
+| [七阶段中文资料](resources/chinese-roadmap.md) | 按阶段 | 中文教材、网站、视频与数据 | 每份资料的学习范围和产出 |
 | [项目作品集](projects/README.md) | 持续 | 四个综合项目 | 可展示的 GitHub 项目 |
 | [20 周进度表](progress/20-week-plan.md) | 持续 | 每周任务和打卡 | 学习记录 |
 | [知乎专栏写作系统](writing/README.md) | 持续 | 定位、选题、模板、发布标准 | 14 篇生产实践文章 |

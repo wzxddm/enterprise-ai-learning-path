@@ -16,17 +16,12 @@
 
 ## 核心资料
 
-### 必读文章
+全部为中文，严格按顺序学习：
 
-- [Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents)
+1. [Datawhale：Hello-Agents](https://datawhalechina.github.io/hello-agents/)：先学智能体、ReAct、工具调用、记忆和上下文，再学工作流、通信协议与评测。
+2. [书生浦语：Lagent 自定义 Agent 智能体](https://github.com/InternLM/Tutorial)：只完成 Lagent 关卡，重点理解工具注册、状态、终止条件和错误恢复。
 
-重点理解 Prompt Chaining、Routing、Parallelization、Orchestrator-Workers 和 Evaluator-Optimizer。
-
-### 官方文档
-
-- [Model Context Protocol](https://modelcontextprotocol.io/)
-- [MCP Servers 示例](https://github.com/modelcontextprotocol/servers)
-- [LangGraph Documentation](https://langchain-ai.github.io/langgraph/)
+每份资料的难度与产出见[七阶段中文资料学习顺序](../resources/chinese-roadmap.md)。
 
 ## 工程模型
 

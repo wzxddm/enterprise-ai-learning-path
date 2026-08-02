@@ -35,7 +35,7 @@
 每个阶段采用相同流程：
 
 ```text
-视频建立直觉 → 书籍补全原理 → 官方文档动手 → 项目验证 → 复盘输出
+中文视频建立直觉 → 中文教材补全原理 → 中文文档动手 → 项目验证 → 复盘输出
 ```
 
 ## 三个进阶方向
@@ -44,9 +44,11 @@
 
 | 方向 | 重点内容 | 推荐后续资料 |
 |---|---|---|
-| LLM 应用工程 | 高质量 RAG、Agent、评测、可观测性 | Full Stack Deep Learning、AI Engineering |
-| 大模型算法 | 预训练、数据治理、对齐、论文复现 | Stanford CS224N、CS336 |
-| AI 基础设施 | CUDA、分布式训练、推理优化 | vLLM、DeepSpeed、Megatron-LM |
+| LLM 应用工程 | 高质量 RAG、Agent、评测、可观测性 | Datawhale LLM Universe、Hello-Agents、书生浦语实战营 |
+| 大模型算法 | 预训练、数据治理、对齐、原理复现 | Happy-LLM、Tiny-Universe、开源大模型食用指南 |
+| AI 基础设施 | 量化、推理优化、服务与压测 | LMDeploy 中文教程、OpenCompass 中文教程 |
+
+具体链接与限定章节见[七阶段中文资料学习顺序](../resources/chinese-roadmap.md)。
 
 ## 阶段验收规则
 

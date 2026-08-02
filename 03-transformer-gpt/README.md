@@ -22,34 +22,13 @@ Tokenizer
 
 ## 核心资料
 
-### 图文
+全部为中文，严格按顺序学习：
 
-- [The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/)
-- [The Illustrated GPT-2](https://jalammar.github.io/illustrated-gpt2/)
-- [The Annotated Transformer](https://nlp.seas.harvard.edu/annotated-transformer/)
+1. [《动手学深度学习》：注意力机制](https://zh-v2.d2l.ai/chapter_attention-mechanisms/index.html)：先建立 Q、K、V、Mask 与多头注意力直觉。
+2. [Datawhale：从零开始的大语言模型原理与实践](https://github.com/datawhalechina/happy-llm)：只学 Tokenizer、Embedding、Transformer、Decoder-only 和预训练目标。
+3. [Datawhale：大模型白盒子构建指南](https://github.com/datawhalechina/tiny-universe)：只做 Tiny Transformer 与 Tiny Llama3；Tiny RAG、Agent、Eval 留到后续阶段。
 
-### 视频与代码
-
-- [Andrej Karpathy YouTube](https://www.youtube.com/@AndrejKarpathy)
-  1. `The spelled-out intro to neural networks and backpropagation`
-  2. `Let's build GPT: from scratch, in code`
-  3. `Let's build the GPT Tokenizer`
-- [Zero to Hero 配套代码](https://github.com/karpathy/nn-zero-to-hero)
-- [nanoGPT](https://github.com/karpathy/nanoGPT)
-
-### 书籍
-
-- Sebastian Raschka：《Build a Large Language Model (From Scratch)》
-- [配套代码：LLMs from Scratch](https://github.com/rasbt/LLMs-from-scratch)
-- Lewis Tunstall 等：《Natural Language Processing with Transformers》
-
-### 论文
-
-- [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
-- [GPT-3](https://arxiv.org/abs/2005.14165)
-- [LLaMA](https://arxiv.org/abs/2302.13971)
-
-第一遍读论文时只关注：问题、核心改动、架构图、实验结论，不要求推导全部公式。
+每份资料的难度与产出见[七阶段中文资料学习顺序](../resources/chinese-roadmap.md)。
 
 ## 实践任务
 
@@ -57,7 +36,7 @@ Tokenizer
 - [ ] 手写 Causal Mask。
 - [ ] 实现 Multi-Head Attention 和 Transformer Block。
 - [ ] 实现或分析一个简单 Tokenizer。
-- [ ] 跟随 Karpathy 训练迷你 GPT。
+- [ ] 跟随 Tiny-Universe 训练迷你 GPT。
 - [ ] 比较有无 KV Cache 的生成过程。
 
 ## 阶段验收

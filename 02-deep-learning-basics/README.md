@@ -25,21 +25,13 @@
 
 ## 核心资料
 
-### 视频
+全部为中文，严格按顺序学习：
 
-- [3Blue1Brown：线性代数的本质](https://www.3blue1brown.com/topics/linear-algebra)
-- [3Blue1Brown：神经网络](https://www.3blue1brown.com/topics/neural-networks)
+1. [李沐：动手学深度学习中文视频](https://space.bilibili.com/1567748478/channel/seriesdetail?sid=358497)：只看预备知识、线性神经网络、多层感知机和深度学习计算对应视频。
+2. [《动手学深度学习》中文版](https://zh-v2.d2l.ai/)：只学第 2～5 章和第 11 章，不展开计算机视觉与完整数学体系。
+3. [CLUE 中文语言理解评测](https://github.com/CLUEbenchmark/CLUE)：只使用 TNEWS 新闻分类数据完成阶段项目。
 
-### 书籍
-
-- [《动手学深度学习》中文版](https://zh-v2.d2l.ai/)
-  - 重点：线性神经网络、多层感知机、深度学习计算、优化算法、注意力机制。
-- [Deep Learning](https://www.deeplearningbook.org/)
-  - 作为查阅资料，不建议从头通读。
-
-### 官方文档
-
-- [PyTorch 60 Minute Blitz](https://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html)
+每份资料的难度与产出见[七阶段中文资料学习顺序](../resources/chinese-roadmap.md)。
 
 ## 实践任务
 

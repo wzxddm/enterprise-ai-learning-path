@@ -167,7 +167,7 @@
     if (!raw) return { name: "dashboard" };
     const [name, id] = raw.split("/");
     if (name === "stage" && DATA.stages.some((stage) => stage.id === id)) return { name, id };
-    if (["dashboard", "practice", "projects", "writing", "progress"].includes(name)) return { name };
+    if (["dashboard", "resources", "practice", "projects", "writing", "progress"].includes(name)) return { name };
     return { name: "dashboard" };
   }
 
@@ -181,6 +181,7 @@
   function breadcrumb(route) {
     const names = {
       dashboard: "学习总览",
+      resources: "中文资料",
       practice: "习题测验",
       projects: "项目实战",
       writing: "知乎专栏",
@@ -222,6 +223,7 @@
     });
 
     if (route.name === "stage") renderStage(route.id);
+    else if (route.name === "resources") renderResources();
     else if (route.name === "practice") renderPractice();
     else if (route.name === "projects") renderProjects();
     else if (route.name === "writing") renderWriting();
@@ -361,13 +363,9 @@
             <div class="concept-cloud">${stage.concepts.map((concept) => `<span class="concept-chip">${escapeHTML(concept)}</span>`).join("")}</div>
           </div>
           <div class="card" style="margin-top:16px">
-            <div class="section-head"><h2>核心资料</h2><p>优先一手资料</p></div>
-            <div class="resource-list">
-              ${stage.resources.map((resource) => `
-                <a class="resource-item" href="${escapeHTML(resource.url)}" target="_blank" rel="noreferrer">
-                  <span class="resource-badge">${escapeHTML(resource.type)}</span>
-                  <div><strong>${escapeHTML(resource.title)}</strong><small>打开资料 ↗</small></div>
-                </a>`).join("")}
+            <div class="section-head"><h2>本阶段中文资料</h2><a href="#/resources">查看完整资料库</a></div>
+            <div class="stage-resource-list">
+              ${stage.resources.map((resource) => resourceCardHTML(resource, true)).join("")}
             </div>
           </div>
         </div>
@@ -379,6 +377,48 @@
         <p>${escapeHTML(stage.project.brief)}</p>
         <div class="metrics-list">${stage.project.metrics.map((metric) => `<span>${escapeHTML(metric)}</span>`).join("")}</div>
       </section>`;
+  }
+
+  function resourceCardHTML(resource, compact = false) {
+    return `
+      <article class="learning-resource-card ${compact ? "compact" : ""}">
+        <div class="resource-order"><span>第 ${resource.order} 步</span><small>${escapeHTML(resource.level)}</small></div>
+        <div class="resource-card-main">
+          <div class="resource-card-meta"><span>${escapeHTML(resource.type)}</span><span>全中文</span></div>
+          <h3>${escapeHTML(resource.title)}</h3>
+          <div class="resource-guidance">
+            <p class="resource-focus"><strong>学什么</strong>${escapeHTML(resource.focus)}</p>
+            <p class="resource-output"><strong>学完做什么</strong>${escapeHTML(resource.output)}</p>
+          </div>
+          <a class="resource-link" href="${escapeHTML(resource.url)}" target="_blank" rel="noreferrer">打开中文资料 <span>↗</span></a>
+        </div>
+      </article>`;
+  }
+
+  function renderResources() {
+    const resourceCount = DATA.stages.reduce((sum, stage) => sum + stage.resources.length, 0);
+    view.innerHTML = `
+      <div class="page-head">
+        <div><div class="eyebrow">CHINESE LEARNING LIBRARY</div><h1>中文资料 · 按阶段学习</h1><p>这里不做资料堆砌。${resourceCount} 份资料全部为中文，并固定到所属阶段；严格按“第 1 步 → 第 2 步 → 实战”推进，不需要提前学习后续内容。</p></div>
+      </div>
+      <section class="resource-principles card">
+        <div><strong>01</strong><span>先看“学什么”</span><p>只读指定章节，不从头刷完整网站。</p></div>
+        <div><strong>02</strong><span>按顺序完成</span><p>视频建直觉，教程补原理，数据与项目验证。</p></div>
+        <div><strong>03</strong><span>用产出验收</span><p>看完不算完成，必须交付代码、数据或报告。</p></div>
+      </section>
+      <div class="resource-library">
+        ${DATA.stages.map((stage) => `
+          <section class="resource-stage-section ${toneClass(stage)}">
+            <div class="resource-stage-head">
+              <div class="resource-stage-number">${stage.number}</div>
+              <div><div class="eyebrow">${escapeHTML(stage.weeks)} · ${escapeHTML(stage.duration)}</div><h2>${escapeHTML(stage.title)}</h2><p>阶段产出：${escapeHTML(stage.outcome)}</p></div>
+              <button class="button compact" type="button" data-route="stage/${stage.id}">进入阶段 →</button>
+            </div>
+            <div class="resource-card-grid">
+              ${stage.resources.map((resource) => resourceCardHTML(resource)).join("")}
+            </div>
+          </section>`).join("")}
+      </div>`;
   }
 
   function taskHTML(task) {

@@ -13,20 +13,13 @@
 
 ## 核心资料
 
-### 官方文档
+全部为中文，严格按顺序学习：
 
-- [Hugging Face LLM Course](https://huggingface.co/learn/llm-course/chapter1/1)
-- [PEFT Documentation](https://huggingface.co/docs/peft/)
-- [TRL Documentation](https://huggingface.co/docs/trl/)
-- [Alignment Handbook](https://github.com/huggingface/alignment-handbook)
-- [Unsloth Documentation](https://docs.unsloth.ai/)
+1. [Datawhale：开源大模型食用指南](https://github.com/datawhalechina/self-llm)：学习本地部署、数据格式、全参数微调与 LoRA 的区别，只选一个小模型案例。
+2. [LLaMA Factory 中文官方文档](https://llamafactory.readthedocs.io/zh-cn/latest/)：学习数据集、Chat Template、LoRA/QLoRA、训练监控、导出和评估。
+3. [LLaMA Factory 官方中文视频教程](https://www.bilibili.com/video/BV1djgRzxEts/)：读完文档后再跟做，并逐项核对参数含义。
 
-### 论文
-
-- [LoRA](https://arxiv.org/abs/2106.09685)
-- [QLoRA](https://arxiv.org/abs/2305.14314)
-- [InstructGPT](https://arxiv.org/abs/2203.02155)
-- [DPO](https://arxiv.org/abs/2305.18290)
+每份资料的难度与产出见[七阶段中文资料学习顺序](../resources/chinese-roadmap.md)。
 
 ## 技术选型判断
 

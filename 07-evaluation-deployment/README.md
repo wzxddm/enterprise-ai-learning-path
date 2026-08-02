@@ -13,19 +13,18 @@
 - 人工盲测。
 - 质量、延迟、吞吐量和成本的综合权衡。
 
-### 工具
+### 中文评测资料
 
-- [Ragas](https://docs.ragas.io/)
-- [Promptfoo](https://www.promptfoo.dev/)
-- [DeepEval](https://docs.confident-ai.com/)
+1. [OpenCompass 中文评测教程](https://opencompass.readthedocs.io/zh-cn/latest/)：依次学习快速开始、数据集与模型配置、指标、主观评测和 LLM Judge。
 
 ## 部署与推理
 
 ### 学习顺序
 
-1. [Ollama](https://ollama.com/)：快速本地验证。
-2. [llama.cpp](https://github.com/ggml-org/llama.cpp)：CPU、端侧和量化。
-3. [vLLM](https://docs.vllm.ai/)：生产级 GPU 推理。
+1. [LMDeploy 中文部署教程](https://lmdeploy.readthedocs.io/zh-cn/latest/)：依次学习离线推理、兼容服务、量化、性能测试和生产指标监控。
+2. [书生浦语大模型实战营](https://github.com/InternLM/Tutorial)：只完成 OpenCompass 评测、量化和 LMDeploy 部署相关关卡。
+
+每份资料的难度与产出见[七阶段中文资料学习顺序](../resources/chinese-roadmap.md)。
 
 ### 必学内容
 
@@ -40,7 +39,7 @@
 
 - [ ] 建立至少 100 条固定评测用例。
 - [ ] 为 Prompt、RAG 和模型版本建立回归测试。
-- [ ] 使用 vLLM 部署一个开源模型。
+- [ ] 使用 LMDeploy 部署一个开源模型。
 - [ ] 提供兼容 OpenAI API 的服务。
 - [ ] 完成不同并发量的压力测试。
 - [ ] 对比至少两种精度或量化配置。
@@ -62,9 +61,6 @@
 
 ## 后续深入资料
 
-- [Stanford CS224N](https://web.stanford.edu/class/cs224n/)
-- [Stanford CS336：Language Modeling from Scratch](https://stanford-cs336.github.io/)
-- [NVIDIA CUDA C++ Programming Guide](https://docs.nvidia.com/cuda/cuda-c-programming-guide/)
-- [DeepSpeed Tutorials](https://www.deepspeed.ai/tutorials/)
-- [PyTorch FSDP Tutorial](https://pytorch.org/tutorials/intermediate/FSDP_tutorial.html)
-- [Megatron-LM](https://github.com/NVIDIA/Megatron-LM)
+- [LMDeploy 中文部署教程](https://lmdeploy.readthedocs.io/zh-cn/latest/)：继续深入量化、并行、性能测试与监控章节。
+- [OpenCompass 中文评测教程](https://opencompass.readthedocs.io/zh-cn/latest/)：继续深入自定义数据集、主观评测和加速评测章节。
+- [Datawhale：大模型白盒子构建指南](https://github.com/datawhalechina/tiny-universe)：学习 Tiny Eval，并与本阶段评测体系对照。

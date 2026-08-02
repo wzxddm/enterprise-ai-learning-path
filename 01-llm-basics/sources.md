@@ -1,49 +1,41 @@
-# 第一阶段资料与事实来源
+# 第一阶段中文资料与事实来源
 
-更新时间：2026-08-01
+更新时间：2026-08-02
 
-## 核心学习资料
+本阶段只使用中文学习入口。详细的七阶段总顺序见[七阶段中文资料学习顺序](../resources/chinese-roadmap.md)。
 
-- [Andrej Karpathy YouTube](https://www.youtube.com/@AndrejKarpathy)：搜索 `Intro to Large Language Models`。
-- [Generative AI for Everyone](https://www.deeplearning.ai/courses/generative-ai-for-everyone/)
-- [Hugging Face LLM Course](https://huggingface.co/learn/llm-course/chapter1/1)
-- [OpenAI Cookbook](https://github.com/openai/openai-cookbook)
+## 必读顺序
 
-## 生产现状资料
+### 第 1 步：建立企业应用地图
 
-### Stanford HAI：2026 AI Index
+- [阿里云百炼：什么是模型服务平台百炼](https://help.aliyun.com/zh/model-studio/what-is-model-studio)
+- 难度：入门。
+- 只学：模型、API、应用编排、企业平台和业务系统之间的关系。
+- 产出：一张“模型—应用—业务系统—评测治理”四层图。
 
-- [报告首页](https://hai.stanford.edu/ai-index/2026-ai-index-report)
-- [完整 PDF](https://hai.stanford.edu/assets/files/ai_index_report_2026.pdf)
+### 第 2 步：理解模型调用与 Prompt 契约
 
-本阶段引用的关键信息：
+- [Datawhale：动手学大模型应用开发](https://datawhalechina.github.io/llm-universe/)
+- 难度：入门实践。
+- 只学：大模型简介、模型 API、Prompt 工程、结构化输出和应用评测入门。
+- 产出：Token、采样稳定性、Prompt 版本和 JSON Schema 实验。
 
-- 组织 AI 采用率达到 88%。
-- AI Agent 在 OSWorld 上从 12% 上升至约 66%，但仍约三分之一任务失败。
-- 负责任 AI 的测量和披露没有跟上能力发展。
-- 报告记录的 AI 事故增至 362 起，高于 2024 年的 233 起。
+### 第 3 步：完成提示词实战
 
-### Deloitte：2026 State of AI in the Enterprise
+- [书生浦语大模型实战营](https://github.com/InternLM/Tutorial)
+- 难度：进阶实践。
+- 只学：“大模型及 InternLM 概述”和“提示词工程”。RAG、Agent、微调、评测与部署关卡分别留给后续阶段。
+- 产出：客服工单助手的提示词契约、失败测试、降级设计和复盘。
 
-- [报告页面](https://www.deloitte.com/us/en/what-we-do/capabilities/applied-artificial-intelligence/content/state-of-ai-in-the-enterprise.html)
+## 生产现状的取材原则
 
-本阶段引用的关键信息：
+- 优先选择政府部门、研究机构、云厂商中文官方文档和国内开源社区的一手资料。
+- 行业数字必须写明发布日期、样本范围和统计口径；找不到中文原始口径时宁可不写数字。
+- 将“公开事实”“工程实验”“个人判断”“未来预测”分开表达。
+- 模型能力与产品功能变化快，知乎文章发布前重新核对页面日期和当前能力。
 
-- 调研覆盖 24 个国家的 3,235 名企业领导者，采集时间为 2025 年 8～9 月。
-- 员工接触 AI 的比例在 2025 年上升 50%。
-- 只有 34% 的企业在真正重新设计业务。
-- AI 技能差距被认为是集成的最大障碍。
-- 只有约五分之一企业具有成熟的自主 Agent 治理模型。
-- 企业在战略准备度上的信心，高于基础设施、数据、风险和人才方面的准备度。
+## 本阶段不做什么
 
-## 风险与安全资料
-
-- [NIST AI RMF: Generative AI Profile](https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence)
-- [OWASP Top 10 for LLM Applications](https://genai.owasp.org/llm-top-10/)
-
-## 引用原则
-
-- 行业数字尽量引用原始报告，而不是二次转载。
-- 写明报告年份、样本范围和统计口径。
-- 将“报告事实”“工程经验”“个人预测”分开写。
-- 模型能力变化快，文章发布前复核日期敏感内容。
+- 不把英文报告或英文视频列为必读资料。
+- 不提前学习 RAG、Agent、LoRA 和部署课程。
+- 不以“看完资料”作为验收，必须完成测试集、项目指标和失败案例。

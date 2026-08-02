@@ -25,10 +25,9 @@ window.LEARNING_DATA = {
       },
       concepts: ["Token 与上下文", "采样与非确定性", "Prompt 契约", "结构化输出", "Tool Calling", "模型选型", "幻觉与注入", "评测与兜底"],
       resources: [
-        { type: "视频", title: "Karpathy · Intro to Large Language Models", url: "https://www.youtube.com/@AndrejKarpathy" },
-        { type: "报告", title: "Stanford · 2026 AI Index", url: "https://hai.stanford.edu/ai-index/2026-ai-index-report" },
-        { type: "报告", title: "Deloitte · 2026 State of AI", url: "https://www.deloitte.com/us/en/what-we-do/capabilities/applied-artificial-intelligence/content/state-of-ai-in-the-enterprise.html" },
-        { type: "安全", title: "OWASP Top 10 for LLM Applications", url: "https://genai.owasp.org/llm-top-10/" }
+        { order: 1, type: "中文文档", title: "阿里云百炼：什么是模型服务平台百炼", level: "入门", focus: "先认识模型、API、应用编排和企业模型服务平台，不钻 SDK 细节。", output: "画出“模型—应用—业务系统—评测治理”四层图。", url: "https://help.aliyun.com/zh/model-studio/what-is-model-studio" },
+        { order: 2, type: "中文教程", title: "Datawhale：动手学大模型应用开发", level: "入门实践", focus: "学习大模型简介、调用模型 API、Prompt 工程和结构化输出章节。", output: "完成 Token、采样、Prompt 与 JSON 输出实验。", url: "https://datawhalechina.github.io/llm-universe/" },
+        { order: 3, type: "中文课程", title: "书生浦语大模型实战营", level: "进阶实践", focus: "本阶段只学“大模型及 InternLM 概述”和“提示词工程”；RAG、Agent、微调留到后续。", output: "完成工单分诊助手的提示词契约、失败测试和复盘。", url: "https://github.com/InternLM/Tutorial" }
       ],
       tasks: [
         { id: "s1-t1", title: "阅读企业 AI 技术地图", type: "阅读", minutes: 45, detail: "标注模型、编排、数据、评测和治理五层。" },
@@ -66,9 +65,9 @@ window.LEARNING_DATA = {
       },
       concepts: ["矩阵与点积", "Softmax", "交叉熵", "梯度与链式法则", "反向传播", "优化器", "过拟合", "PyTorch 训练循环"],
       resources: [
-        { type: "视频", title: "3Blue1Brown · 神经网络", url: "https://www.3blue1brown.com/topics/neural-networks" },
-        { type: "教材", title: "动手学深度学习", url: "https://zh-v2.d2l.ai/" },
-        { type: "文档", title: "PyTorch 60 Minute Blitz", url: "https://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html" }
+        { order: 1, type: "中文视频", title: "李沐：动手学深度学习中文视频", level: "入门", focus: "按顺序看预备知识、线性神经网络、多层感知机和深度学习计算对应视频。", output: "用自己的话解释张量、Loss、梯度、Batch 和过拟合。", url: "https://space.bilibili.com/1567748478/channel/seriesdetail?sid=358497" },
+        { order: 2, type: "中文教材", title: "《动手学深度学习》中文版", level: "入门到中级", focus: "只学第 2～5 章和第 11 章；不展开计算机视觉与完整数学体系。", output: "实现训练、验证、保存、加载和 Loss 曲线分析。", url: "https://zh-v2.d2l.ai/" },
+        { order: 3, type: "中文数据", title: "CLUE 中文语言理解评测：TNEWS 数据", level: "实践", focus: "只取 TNEWS 新闻分类子任务，理解训练集、验证集、标签和类别不平衡。", output: "完成小型中文文本分类与错误样本分析。", url: "https://github.com/CLUEbenchmark/CLUE" }
       ],
       tasks: [
         { id: "s2-t1", title: "理解矩阵、点积与余弦相似度", type: "原理", minutes: 120, detail: "用代码验证每个运算的形状和意义。" },
@@ -99,9 +98,9 @@ window.LEARNING_DATA = {
       },
       concepts: ["Tokenizer", "Embedding", "位置编码", "Self-Attention", "Multi-Head", "Causal Mask", "Decoder-only", "KV Cache"],
       resources: [
-        { type: "图文", title: "The Illustrated Transformer", url: "https://jalammar.github.io/illustrated-transformer/" },
-        { type: "视频", title: "Karpathy · Zero to Hero", url: "https://github.com/karpathy/nn-zero-to-hero" },
-        { type: "书籍", title: "Build a Large Language Model From Scratch", url: "https://github.com/rasbt/LLMs-from-scratch" }
+        { order: 1, type: "中文教材", title: "《动手学深度学习》：注意力机制", level: "原理入门", focus: "学习注意力提示、注意力汇聚、Self-Attention 和 Transformer 小节。", output: "画出 Q、K、V、Mask 和多头注意力的数据流。", url: "https://zh-v2.d2l.ai/chapter_attention-mechanisms/index.html" },
+        { order: 2, type: "中文教程", title: "Datawhale：从零开始的大语言模型原理与实践", level: "中级", focus: "聚焦 Tokenizer、Embedding、Transformer、Decoder-only 和预训练目标。", output: "手写 Attention、Causal Mask 和 Transformer Block。", url: "https://github.com/datawhalechina/happy-llm" },
+        { order: 3, type: "中文代码课", title: "Datawhale：大模型白盒子构建指南", level: "进阶实践", focus: "本阶段只做 Tiny Transformer 与 Tiny Llama3，Tiny RAG/Agent/Eval 留给后续阶段。", output: "训练迷你 GPT，并完成有无 KV Cache 的性能对比。", url: "https://github.com/datawhalechina/tiny-universe" }
       ],
       tasks: [
         { id: "s3-t1", title: "实现并分析 Tokenizer", type: "编码", minutes: 240, detail: "观察语言和词表如何影响 Token 数。" },
@@ -132,9 +131,10 @@ window.LEARNING_DATA = {
       },
       concepts: ["Embedding", "Chunking", "Vector Search", "Hybrid Search", "Reranker", "Query Rewrite", "引用", "分层评测"],
       resources: [
-        { type: "文档", title: "Sentence Transformers", url: "https://www.sbert.net/" },
-        { type: "文档", title: "LlamaIndex", url: "https://docs.llamaindex.ai/" },
-        { type: "课程", title: "Full Stack Deep Learning", url: "https://fullstackdeeplearning.com/llm-bootcamp/" }
+        { order: 1, type: "中文教程", title: "Datawhale：动手学大模型应用开发 · RAG", level: "入门", focus: "只学 Embedding、文档切分、向量检索、检索增强生成和基础评测部分。", output: "先手写不依赖完整框架的最小 RAG 链路。", url: "https://datawhalechina.github.io/llm-universe/" },
+        { order: 2, type: "中文文档", title: "Milvus 中文官方文档", level: "中级", focus: "学习向量、Collection、索引、相似度、Metadata Filter 和部署概念。", output: "比较三种切分策略，并记录 Recall@k 与检索延迟。", url: "https://milvus.io/docs/zh/overview.md" },
+        { order: 3, type: "中文实战", title: "书生浦语：InternLM + LlamaIndex RAG 实践", level: "进阶实践", focus: "只完成 RAG 关卡，重点观察框架封装的加载、索引、检索与生成环节。", output: "实现带引用、拒答、权限过滤和 50 条问题集的知识助手。", url: "https://github.com/InternLM/Tutorial" },
+        { order: 4, type: "中文项目", title: "茴香豆：企业级知识助手实践", level: "拓展", focus: "阶段项目完成后再阅读其领域知识助手设计，不作为入门必做项。", output: "对照自己的方案补充拒答、群聊场景和运维设计。", url: "https://github.com/InternLM/HuixiangDou/blob/main/README_zh.md" }
       ],
       tasks: [
         { id: "s4-t1", title: "手写最小语义搜索", type: "编码", minutes: 180, detail: "理解向量、相似度与 Top-k。" },
@@ -165,9 +165,8 @@ window.LEARNING_DATA = {
       },
       concepts: ["Workflow vs Agent", "Tool Schema", "ReAct", "状态管理", "幂等", "权限", "MCP", "Prompt Injection"],
       resources: [
-        { type: "文章", title: "Building Effective Agents", url: "https://www.anthropic.com/engineering/building-effective-agents" },
-        { type: "协议", title: "Model Context Protocol", url: "https://modelcontextprotocol.io/" },
-        { type: "文档", title: "LangGraph", url: "https://langchain-ai.github.io/langgraph/" }
+        { order: 1, type: "中文教材", title: "Datawhale：Hello-Agents", level: "入门到中级", focus: "先学智能体概念、ReAct、工具调用、记忆和上下文；再学工作流、通信协议与评测章节。", output: "完成 Workflow/Agent 选型表和一个只读工具调用循环。", url: "https://datawhalechina.github.io/hello-agents/" },
+        { order: 2, type: "中文实战", title: "书生浦语：Lagent 自定义 Agent 智能体", level: "进阶实践", focus: "只完成 Lagent 关卡，重点理解工具注册、状态、终止条件和错误恢复。", output: "实现可中止、可观测、有权限边界的代码仓库 Agent。", url: "https://github.com/InternLM/Tutorial" }
       ],
       tasks: [
         { id: "s5-t1", title: "设计 Workflow 与 Agent 决策表", type: "分析", minutes: 90, detail: "优先选择可控的最小自治范围。" },
@@ -197,9 +196,9 @@ window.LEARNING_DATA = {
       },
       concepts: ["SFT", "Instruction Tuning", "LoRA", "QLoRA", "Chat Template", "数据治理", "DPO", "灾难性遗忘"],
       resources: [
-        { type: "文档", title: "Hugging Face PEFT", url: "https://huggingface.co/docs/peft/" },
-        { type: "文档", title: "TRL", url: "https://huggingface.co/docs/trl/" },
-        { type: "工具", title: "Unsloth", url: "https://docs.unsloth.ai/" }
+        { order: 1, type: "中文教程", title: "Datawhale：开源大模型食用指南", level: "入门实践", focus: "先学本地部署、数据格式、全参数微调与 LoRA 的区别；选择一个小模型案例。", output: "写出 Prompt / RAG / 微调决策表并准备指令数据。", url: "https://github.com/datawhalechina/self-llm" },
+        { order: 2, type: "中文文档", title: "LLaMA Factory 中文官方文档", level: "中级", focus: "学习数据集格式、Chat Template、LoRA/QLoRA 参数、训练监控、导出和评估。", output: "完成一次可复现 LoRA 训练，保存配置、种子和数据版本。", url: "https://llamafactory.readthedocs.io/zh-cn/latest/" },
+        { order: 3, type: "中文视频", title: "LLaMA Factory 官方中文视频教程", level: "进阶实践", focus: "在读完中文文档后跟做，重点核对参数含义，不直接照抄配置。", output: "使用固定测试集完成微调前后与通用能力退化对比。", url: "https://www.bilibili.com/video/BV1djgRzxEts/" }
       ],
       tasks: [
         { id: "s6-t1", title: "完成 Prompt / RAG / 微调决策表", type: "分析", minutes: 90, detail: "先证明微调是必要方案。" },
@@ -220,7 +219,7 @@ window.LEARNING_DATA = {
       duration: "30～36 小时",
       tone: "orange",
       description: "建立上线证据，部署开源模型并完成质量、性能和成本权衡。",
-      outcome: "100 条评测集 + vLLM 服务 + 压测与上线报告",
+      outcome: "100 条评测集 + LMDeploy 服务 + 压测与上线报告",
       production: {
         position: "贯穿 AI 系统生命周期的质量和基础设施层",
         solves: "上线判断、版本回归、容量、延迟、成本与可靠性",
@@ -229,14 +228,14 @@ window.LEARNING_DATA = {
       },
       concepts: ["Golden Set", "LLM-as-a-Judge", "量化", "KV Cache", "Continuous Batching", "PagedAttention", "TTFT", "吞吐与成本"],
       resources: [
-        { type: "评测", title: "Ragas", url: "https://docs.ragas.io/" },
-        { type: "评测", title: "Promptfoo", url: "https://www.promptfoo.dev/" },
-        { type: "部署", title: "vLLM", url: "https://docs.vllm.ai/" }
+        { order: 1, type: "中文文档", title: "OpenCompass 中文评测教程", level: "入门到中级", focus: "学习快速开始、数据集与模型配置、指标、主观评测和 LLM Judge。", output: "建立 100 条 Golden Set 和版本回归评测流水线。", url: "https://opencompass.readthedocs.io/zh-cn/latest/" },
+        { order: 2, type: "中文文档", title: "LMDeploy 中文部署教程", level: "中级", focus: "依次学习离线推理、兼容服务、量化、性能测试和生产指标监控。", output: "部署兼容 API 的模型服务并记录 TTFT、吞吐、显存和成本。", url: "https://lmdeploy.readthedocs.io/zh-cn/latest/" },
+        { order: 3, type: "中文实战", title: "书生浦语：OpenCompass 评测与 LMDeploy 部署", level: "进阶实践", focus: "只做评测、量化和部署相关关卡，把前六阶段项目放入回归测试。", output: "提交质量、性能、成本、风险完整的 Go / No-Go 报告。", url: "https://github.com/InternLM/Tutorial" }
       ],
       tasks: [
         { id: "s7-t1", title: "建立 100 条 Golden Set", type: "评测", minutes: 300, detail: "包含质量、风险和长尾案例。" },
         { id: "s7-t2", title: "建立版本回归流水线", type: "项目", minutes: 240, detail: "覆盖 Prompt、模型和检索版本。" },
-        { id: "s7-t3", title: "使用 vLLM 部署开源模型", type: "部署", minutes: 300, detail: "提供兼容 API 的服务。" },
+        { id: "s7-t3", title: "使用 LMDeploy 部署开源模型", type: "部署", minutes: 300, detail: "提供兼容 API 的服务。" },
         { id: "s7-t4", title: "完成并发和量化压测", type: "实验", minutes: 300, detail: "报告 P50/P95、TTFT、Token/s 和显存。" },
         { id: "s7-t5", title: "完成最终 Go / No-Go 报告", type: "写作", minutes: 240, detail: "整合质量、性能、成本和风险。" }
       ],

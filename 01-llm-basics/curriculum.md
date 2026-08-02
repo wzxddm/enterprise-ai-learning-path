@@ -14,9 +14,8 @@
 
 资料：
 
-- Karpathy：`Intro to Large Language Models`
-- [2026 Stanford AI Index](https://hai.stanford.edu/ai-index/2026-ai-index-report)
-- [2026 Deloitte State of AI in the Enterprise](https://www.deloitte.com/us/en/what-we-do/capabilities/applied-artificial-intelligence/content/state-of-ai-in-the-enterprise.html)
+- [阿里云百炼：什么是模型服务平台百炼](https://help.aliyun.com/zh/model-studio/what-is-model-studio)：认识模型、API、应用编排和企业平台的位置。
+- [Datawhale：动手学大模型应用开发](https://datawhalechina.github.io/llm-universe/)：只学大模型简介与 API 应用入门部分。
 
 练习：选择自己熟悉的一个行业，列出 10 个工作任务，并用以下维度评分：业务频率、人工耗时、输入非结构化程度、错误成本、数据可得性、是否需要执行外部动作。
 
@@ -96,8 +95,8 @@
 
 资料：
 
-- [NIST Generative AI Profile](https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence)
-- [OWASP Top 10 for LLM Applications](https://genai.owasp.org/llm-top-10/)
+- [书生浦语大模型实战营](https://github.com/InternLM/Tutorial)：本阶段只学提示词工程中的边界、安全和失败案例；后续关卡先不展开。
+- [Datawhale：动手学大模型应用开发](https://datawhalechina.github.io/llm-universe/)：结合应用评测部分建立自己的攻击与失败测试集。
 
 实验：构造越权指令、提示词窃取、伪造高优先级、超长输入四类攻击，记录系统在哪一层阻断。
 
