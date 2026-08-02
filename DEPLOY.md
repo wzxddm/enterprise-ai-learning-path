@@ -2,9 +2,9 @@
 
 ## 当前仓库边界
 
-当前 `ai` 目录位于父仓库 `/Users/wzx/work/go/gopath/src/github.com/wzxddm` 内，父仓库远程是 `https://github.com/wzxddm/doubao.git`。
+当前 `ai` 目录物理上位于父仓库 `/Users/wzx/work/go/gopath/src/github.com/wzxddm` 内，但已经初始化为独立 Git 仓库；父仓库远程是 `https://github.com/wzxddm/doubao.git`。
 
-不要直接在父仓库执行 `git add .` 或推送，否则可能把学习平台和同级项目一起提交到 `doubao`。
+所有 Git 操作都应在当前 `ai` 目录执行，远程必须指向新的学习平台仓库，不能使用 `doubao`。
 
 ## 推荐发布方式
 
@@ -14,13 +14,9 @@
 wzxddm/enterprise-ai-learning-path
 ```
 
-然后在当前 `ai` 目录初始化独立仓库：
+当前目录已经完成初始化和首次提交。创建远程仓库后执行：
 
 ```bash
-git init
-git branch -M main
-git add README.md DEPLOY.md docs 00-overview 01-llm-basics 02-deep-learning-basics 03-transformer-gpt 04-rag 05-agent 06-finetuning-alignment 07-evaluation-deployment progress projects writing
-git commit -m "feat: add enterprise AI learning platform"
 git remote add origin https://github.com/wzxddm/enterprise-ai-learning-path.git
 git push -u origin main
 ```
