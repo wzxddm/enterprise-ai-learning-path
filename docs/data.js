@@ -26,8 +26,9 @@ window.LEARNING_DATA = {
       concepts: ["Token 与上下文", "采样与非确定性", "Prompt 契约", "结构化输出", "Tool Calling", "模型选型", "幻觉与注入", "评测与兜底"],
       resources: [
         { order: 1, type: "中文文档", title: "阿里云百炼：什么是模型服务平台百炼", level: "入门", focus: "先认识模型、API、应用编排和企业模型服务平台，不钻 SDK 细节。", output: "画出“模型—应用—业务系统—评测治理”四层图。", url: "https://help.aliyun.com/zh/model-studio/what-is-model-studio" },
-        { order: 2, type: "中文教程", title: "Datawhale：动手学大模型应用开发", level: "入门实践", focus: "学习大模型简介、调用模型 API、Prompt 工程和结构化输出章节。", output: "完成 Token、采样、Prompt 与 JSON 输出实验。", url: "https://datawhalechina.github.io/llm-universe/" },
-        { order: 3, type: "中文课程", title: "书生浦语大模型实战营", level: "进阶实践", focus: "本阶段只学“大模型及 InternLM 概述”和“提示词工程”；RAG、Agent、微调留到后续。", output: "完成工单分诊助手的提示词契约、失败测试和复盘。", url: "https://github.com/InternLM/Tutorial" }
+        { order: 2, type: "中文教程", title: "Datawhale：动手学大模型应用开发", level: "入门实践", focus: "只学第一章、第二章的基本概念与 Prompt Engineering、第五章的评估入门。", output: "完成 Token、采样、Prompt 版本与字段稳定性实验。", url: "https://datawhalechina.github.io/llm-universe/" },
+        { order: 3, type: "中文视频", title: "书生浦语：浦语提示词工程实践", level: "进阶实践", focus: "观看结构化提示词部分；跳过与企业工单无关的小红书文案案例。", output: "将工单任务改写成角色、目标、约束、流程和输出契约。", url: "https://www.bilibili.com/video/BV1tjS7YfEWJ/" },
+        { order: 4, type: "中文任务", title: "书生浦语：提示词工程任务文档", level: "动手训练", focus: "只做结构化提示词练习，再进入平台内的工单数据实验。", output: "提交三个 Prompt 版本、失败案例和改进说明。", url: "https://github.com/InternLM/Tutorial/tree/camp4/docs/L1/Prompt" }
       ],
       tasks: [
         { id: "s1-t1", title: "阅读企业 AI 技术地图", type: "阅读", minutes: 45, detail: "标注模型、编排、数据、评测和治理五层。" },
@@ -242,6 +243,158 @@ window.LEARNING_DATA = {
       project: { title: "生产评测与推理服务", brief: "构建可回归、可压测、可决策的模型服务。", metrics: ["质量通过率", "P95 / TTFT", "Token/s", "显存与单请求成本"] }
     }
   ],
+  workbooks: {
+    "stage-1": {
+      title: "第一阶段可执行学习单",
+      subtitle: "4 个单元 · 中文资料、练习数据、参考答案与验收标准一一对应",
+      notice: "先独立完成，再展开参考答案。示例答案用于校准方法，不能替代你自己的模型实验数据。",
+      units: [
+        {
+          number: "01",
+          title: "判断一个场景是否值得使用 LLM",
+          time: "2～3 小时",
+          goal: "先学会选问题。企业落地最早失败的地方通常不是 API，而是选了无法评测、无法接管或没有价值的场景。",
+          questions: [
+            "模型、应用编排、业务系统和评测治理分别负责什么？",
+            "LLM 相比规则多了什么能力，又失去了什么确定性？",
+            "什么场景同时满足高频、可评测、失败可接管？"
+          ],
+          sources: [
+            { title: "阿里云百炼：平台定位、模型服务与应用开发", scope: "只看产品定位、模型服务和应用开发能力。", url: "https://help.aliyun.com/zh/model-studio/what-is-model-studio" },
+            { title: "Datawhale 第一章：大模型简介", scope: "只看 1.1 LLM 简介与 1.4 大模型开发整体流程。", url: "https://datawhalechina.github.io/llm-universe/#/C1/C1" }
+          ],
+          steps: [
+            "从自己熟悉的业务中选 3 个候选场景。",
+            "分别按业务频率、人工耗时、语言复杂度、数据可得性、输出可验证性打 1～5 分。",
+            "把错误成本作为单独否决条件，并写出至少一个明确不使用 AI 的场景。",
+            "画出模型—应用—业务系统—评测治理四层图。"
+          ],
+          deliverables: ["3 个场景的评分表", "一张四层生产架构图", "一个不用 AI 的反例"],
+          answer: {
+            label: "示例答案",
+            points: [
+              "客服工单分诊适合作为首个项目：输入非结构化、结果可标注、失败可人工接管，并且可以先以建议模式上线。",
+              "自动退款不适合作为本阶段项目：动作不可逆，还需要鉴权、金额限制、幂等和审批。",
+              "架构图至少应包含模型层、Prompt/Workflow 层、工单与业务 API 层，以及横切的评测、权限、日志和人工兜底。"
+            ]
+          },
+          acceptance: ["不以“模型能回答”作为选型依据", "能说明首版为什么只做分诊建议", "评分包含可验证性和错误成本"]
+        },
+        {
+          number: "02",
+          title: "验证概率性与 Prompt 契约",
+          time: "4～5 小时",
+          goal: "亲手看到同一输入的波动，并用冻结数据比较 Prompt 版本，而不是凭感觉挑一个好回答。",
+          questions: [
+            "Temperature 为 0 是否绝对稳定？",
+            "Few-shot 和结构化 Prompt 各解决什么问题？",
+            "JSON Schema 能保证哪一层正确性？"
+          ],
+          sources: [
+            { title: "Datawhale：基本概念", scope: "只看消息、Token 和生成参数。", url: "https://datawhalechina.github.io/llm-universe/#/C2/1.%20基本概念" },
+            { title: "Datawhale：Prompt Engineering", scope: "学习清晰具体、思考时间和迭代原则。", url: "https://datawhalechina.github.io/llm-universe/#/C2/3.%20Prompt%20Engineering" },
+            { title: "书生浦语：提示词工程中文视频", scope: "只看结构化提示词部分。", url: "https://www.bilibili.com/video/BV1tjS7YfEWJ/" }
+          ],
+          steps: [
+            "下载 20 条中文种子工单和实验记录表。",
+            "任选 5 条，在 Temperature 0 和 0.7 下各运行 5 次。",
+            "分别编写零样本、带规则、带 2 个示例的三个 Prompt 版本。",
+            "统计字段级稳定率、Schema 通过率、P50/P95 和失败类型。"
+          ],
+          files: [
+            { title: "下载 20 条中文种子工单", url: "downloads/stage-1/tickets-seed.jsonl" },
+            { title: "下载实验记录 CSV", url: "downloads/stage-1/experiment-record.csv" }
+          ],
+          deliverables: ["三个 Prompt 版本", "完成的实验 CSV", "一页结论与失败案例"],
+          answer: {
+            label: "结论参考，不是固定数值",
+            points: [
+              "低 Temperature 通常降低但不能消除波动；模型、服务路由和计算实现仍可能变化。",
+              "示例可能改善格式与边界，也可能造成示例偏置，因此必须使用同一冻结测试集比较。",
+              "字段级稳定率可以定义为：某字段 20 次输出中众数出现次数 ÷ 20。不要只比较整段文本。",
+              "Schema 只保证结构；字段是否忠实、优先级是否符合业务规则需要其他校验。"
+            ],
+            files: [{ title: "查看三个 Prompt 版本参考答案", url: "downloads/stage-1/prompt-reference.md" }]
+          },
+          acceptance: ["记录模型、Prompt、参数和数据版本", "至少保留一个反直觉失败案例", "不用少量成功样例得出上线结论"]
+        },
+        {
+          number: "03",
+          title: "建立结构、语义和业务三层校验",
+          time: "4～6 小时",
+          goal: "把模型输出降级为候选结果：Schema 管结构、代码管业务一致性、权限系统管真实动作。",
+          questions: [
+            "Tool Calling 中是谁提出意图，谁执行动作？",
+            "为什么合法 JSON 仍可能造成事故？",
+            "哪些规则必须由确定性代码负责？"
+          ],
+          sources: [
+            { title: "书生浦语：提示词工程任务文档", scope: "完成结构化提示词任务，并映射到工单输出契约。", url: "https://github.com/InternLM/Tutorial/tree/camp4/docs/L1/Prompt" }
+          ],
+          steps: [
+            "阅读参考 Schema，先自己实现字段和枚举校验。",
+            "增加跨字段规则：生产故障必须 P1 且转人工；安全事件必须进入安全团队；未知类别必须转人工。",
+            "构造至少三条 JSON 合法但业务冲突的自动化测试。",
+            "自己的测试通过后，再查看 Go 参考实现。"
+          ],
+          files: [
+            { title: "查看输出 Schema", url: "https://github.com/wzxddm/enterprise-ai-learning-path/blob/main/01-llm-basics/lab/schema/ticket-triage.schema.json" }
+          ],
+          deliverables: ["输出 Schema", "业务校验器", "至少 3 个业务冲突测试", "失败处理流程"],
+          answer: {
+            label: "参考实现说明",
+            points: [
+              "JSON Schema 负责字段存在、类型、枚举和长度；业务校验器负责跨字段一致性。",
+              "模型只生成工具意图和参数候选，应用代码负责校验、鉴权、幂等、执行和审计。",
+              "校验失败应有限修复或转人工，不能因为 JSON 可解析就写入真实工单系统。",
+              "参考 Go 代码演示方法，不代表真实公司的完整业务规则。"
+            ],
+            files: [
+              { title: "查看 Go 参考校验器", url: "https://github.com/wzxddm/enterprise-ai-learning-path/blob/main/01-llm-basics/lab/reference/validator.go" },
+              { title: "查看业务冲突参考测试", url: "https://github.com/wzxddm/enterprise-ai-learning-path/blob/main/01-llm-basics/lab/reference/validator_test.go" }
+            ]
+          },
+          acceptance: ["存在 Schema 通过但业务校验失败的测试", "高风险和未知案例会转人工", "用户输入无法越权改变业务规则"]
+        },
+        {
+          number: "04",
+          title: "用评测完成 Go / No-Go 决策",
+          time: "5～7 小时",
+          goal: "把质量、延迟、成本和风险放在同一份上线报告中，形成第一阶段的企业工程闭环。",
+          questions: [
+            "为什么必须比较规则、纯 LLM 和混合方案？",
+            "为什么 P1 Recall 比总体 Accuracy 更重要？",
+            "什么证据足以进入小流量灰度？"
+          ],
+          sources: [
+            { title: "Datawhale：如何评估 LLM 应用", scope: "只学人工评估、简单自动评估和迭代闭环。", url: "https://datawhalechina.github.io/llm-universe/#/C5/1.如何评估%20LLM%20应用" },
+            { title: "第一阶段完整项目题", scope: "重点看三条基线、指标、生产架构和报告结构。", url: "https://github.com/wzxddm/enterprise-ai-learning-path/blob/main/01-llm-basics/project-ticket-triage.md" }
+          ],
+          steps: [
+            "把 20 条种子数据扩充到至少 50 条，开发集和测试集分开。",
+            "比较关键词规则、纯 LLM、规则 + LLM + 业务校验三条基线。",
+            "统计 Macro-F1、P1 Recall、人工转交 Recall、Schema 通过率、P95 和单工单成本。",
+            "填写 Go / No-Go 报告，并写明灰度范围、监控、人工兜底和回滚。"
+          ],
+          files: [
+            { title: "下载 Go / No-Go 报告模板", url: "downloads/stage-1/go-no-go-template.md" }
+          ],
+          deliverables: ["50～100 条冻结测试集", "三条基线对比", "失败案例清单", "Go / No-Go 报告"],
+          answer: {
+            label: "示例上线判断",
+            points: [
+              "常见的合格结论是 Conditional Go，而不是全自动上线。",
+              "只让混合方案处理低风险、高一致性工单；P1、安全、退款、信息不足和注入案例转人工。",
+              "如果 P1 Recall 未达门槛，即使总体准确率很高，也应 No-Go。",
+              "准确率、延迟和成本必须来自你的真实运行，不能照抄示例数据。"
+            ],
+            files: [{ title: "查看 35 题完整参考答案", url: "https://github.com/wzxddm/enterprise-ai-learning-path/blob/main/01-llm-basics/answer-key.md" }]
+          },
+          acceptance: ["三条方案使用相同测试集和口径", "报告失败案例而非只报平均数", "上线范围、回滚和剩余风险明确"]
+        }
+      ]
+    }
+  },
   quiz: {
     id: "stage-1-quiz",
     title: "第一阶段生产判断测验",

@@ -6,6 +6,8 @@
 
 ## 必读顺序
 
+资料必须配合[可执行学习单](workbook.md)使用；不要先把所有内容看完，再思考能做什么。
+
 ### 第 1 步：建立企业应用地图
 
 - [阿里云百炼：什么是模型服务平台百炼](https://help.aliyun.com/zh/model-studio/what-is-model-studio)
@@ -13,19 +15,36 @@
 - 只学：模型、API、应用编排、企业平台和业务系统之间的关系。
 - 产出：一张“模型—应用—业务系统—评测治理”四层图。
 
-### 第 2 步：理解模型调用与 Prompt 契约
+### 第 2 步：理解模型调用、Prompt 与评估
 
 - [Datawhale：动手学大模型应用开发](https://datawhalechina.github.io/llm-universe/)
 - 难度：入门实践。
-- 只学：大模型简介、模型 API、Prompt 工程、结构化输出和应用评测入门。
-- 产出：Token、采样稳定性、Prompt 版本和 JSON Schema 实验。
+- 只学：第一章；第二章的基本概念与 Prompt Engineering；第五章的评估入门。
+- 产出：Token、采样稳定性、Prompt 版本和字段级一致性实验。
 
-### 第 3 步：完成提示词实战
+### 第 3 步：跟随中文视频建立结构化提示词
 
-- [书生浦语大模型实战营](https://github.com/InternLM/Tutorial)
+- [书生浦语：浦语提示词工程实践](https://www.bilibili.com/video/BV1tjS7YfEWJ/)
 - 难度：进阶实践。
-- 只学：“大模型及 InternLM 概述”和“提示词工程”。RAG、Agent、微调、评测与部署关卡分别留给后续阶段。
-- 产出：客服工单助手的提示词契约、失败测试、降级设计和复盘。
+- 只学：结构化提示词部分，跳过与企业工单无关的文案案例。
+- 产出：工单任务的角色、目标、约束、流程和输出契约。
+
+### 第 4 步：完成中文任务并转入工单实验
+
+- [书生浦语：提示词工程任务文档](https://github.com/InternLM/Tutorial/tree/camp4/docs/L1/Prompt)
+- 难度：动手训练。
+- 只做：结构化提示词练习，然后使用平台提供的 20 条中文工单测试三个 Prompt 版本。
+- 产出：三个 Prompt、实验 CSV、业务校验器、失败案例和改进说明。
+
+## 练习数据与参考答案
+
+- [第一阶段可执行学习单](workbook.md)：四个单元的操作步骤与分层答案。
+- [20 条中文种子工单](../docs/downloads/stage-1/tickets-seed.jsonl)：包含正常、模糊、高风险和注入输入。
+- [实验记录模板](../docs/downloads/stage-1/experiment-record.csv)：记录字段稳定率、延迟、Token 和失败类型。
+- [三个 Prompt 版本参考答案](../docs/downloads/stage-1/prompt-reference.md)：独立完成后再对照迭代思路。
+- [35 道习题参考答案](answer-key.md)：原理、设计、业务与面试题。
+- [Go 参考校验器](lab/reference/validator.go)：演示合法 JSON 仍需业务校验。
+- [Go / No-Go 报告模板](../docs/downloads/stage-1/go-no-go-template.md)：完成最终上线判断。
 
 ## 生产现状的取材原则
 

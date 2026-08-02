@@ -855,6 +855,18 @@ a {
   text-align: right;
 }
 
+.stage-workbook-action {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.stage-workbook-action small {
+  color: var(--muted);
+  font-size: 10px;
+}
+
 .production-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1219,6 +1231,337 @@ a {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 10px;
+}
+
+.workbook-hero {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(28px, 4vw, 48px);
+  border: 1px solid color-mix(in srgb, var(--stage-color) 25%, var(--border));
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 84% 8%, color-mix(in srgb, var(--stage-color) 17%, transparent), transparent 32%),
+    linear-gradient(145deg, color-mix(in srgb, var(--stage-color) 8%, transparent), var(--panel));
+}
+
+.workbook-hero h1 {
+  margin: 5px 0 10px;
+  font-size: clamp(30px, 4vw, 48px);
+  letter-spacing: -0.045em;
+  line-height: 1.08;
+}
+
+.workbook-hero > p {
+  max-width: 760px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.workbook-notice {
+  max-width: 820px;
+  margin-top: 22px;
+  padding: 13px 15px;
+  border: 1px solid color-mix(in srgb, var(--stage-color) 20%, var(--border));
+  border-radius: 11px;
+  background: rgba(0, 0, 0, 0.16);
+  color: #c1c7d1;
+  font-size: 11px;
+}
+
+.workbook-notice span {
+  margin-right: 9px;
+  color: var(--stage-color);
+  font-weight: 750;
+}
+
+.workbook-flow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 18px 0 34px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--panel);
+}
+
+.workbook-flow > div {
+  display: grid;
+  min-height: 90px;
+  align-content: center;
+  padding: 15px;
+  border-left: 1px solid var(--border);
+}
+
+.workbook-flow > div:first-child {
+  border-left: 0;
+}
+
+.workbook-flow strong {
+  color: var(--primary-bright);
+  font-size: 9px;
+}
+
+.workbook-flow span {
+  margin-top: 3px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.workbook-flow small {
+  color: var(--muted-2);
+  font-size: 9px;
+}
+
+.workbook-units {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.workbook-unit {
+  padding: clamp(20px, 3vw, 30px);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--panel);
+}
+
+.workbook-unit-head {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 22px;
+}
+
+.workbook-unit-number {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--stage-color) 30%, transparent);
+  border-radius: 13px;
+  background: color-mix(in srgb, var(--stage-color) 8%, transparent);
+  color: var(--stage-color);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.workbook-unit-head h2 {
+  margin: 3px 0 4px;
+  font-size: 22px;
+  letter-spacing: -0.025em;
+}
+
+.workbook-unit-head p {
+  max-width: 820px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.workbook-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 12px;
+}
+
+.workbook-block {
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  background: rgba(255, 255, 255, 0.018);
+}
+
+.workbook-block h3 {
+  margin: 0 0 12px;
+  font-size: 12px;
+}
+
+.workbook-block ol,
+.answer-content ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.workbook-block li,
+.answer-content li {
+  margin-top: 7px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.workbook-block li:first-child,
+.answer-content li:first-child {
+  margin-top: 0;
+}
+
+.unit-sources {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.unit-sources a {
+  display: grid;
+  padding: 11px 12px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.unit-sources a:hover {
+  border-color: color-mix(in srgb, var(--stage-color) 35%, var(--border));
+}
+
+.unit-sources span {
+  color: var(--stage-color);
+  font-size: 8px;
+  font-weight: 800;
+}
+
+.unit-sources strong {
+  margin-top: 2px;
+  font-size: 11px;
+}
+
+.unit-sources small {
+  margin-top: 2px;
+  color: var(--muted-2);
+  font-size: 9px;
+}
+
+.task-block {
+  margin-top: 12px;
+  border-color: color-mix(in srgb, var(--stage-color) 18%, var(--border));
+}
+
+.task-block ol {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 26px;
+}
+
+.workbook-files {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.workbook-files a {
+  padding: 7px 10px;
+  border: 1px solid color-mix(in srgb, var(--stage-color) 25%, var(--border));
+  border-radius: 8px;
+  color: var(--stage-color);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.workbook-deliverables {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.workbook-deliverables > div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 15px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.workbook-deliverables span {
+  margin-bottom: 3px;
+  color: var(--muted-2);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.workbook-deliverables strong {
+  color: #c5cad3;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.answer-panel {
+  margin-top: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(98, 217, 161, 0.2);
+  border-radius: 12px;
+  background: rgba(98, 217, 161, 0.025);
+}
+
+.answer-panel summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  color: var(--success);
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 700;
+  list-style: none;
+}
+
+.answer-panel summary::-webkit-details-marker {
+  display: none;
+}
+
+.answer-panel summary small {
+  color: var(--muted-2);
+  font-size: 9px;
+  font-weight: 500;
+}
+
+.answer-content {
+  padding: 16px;
+  border-top: 1px solid rgba(98, 217, 161, 0.12);
+}
+
+.answer-content p {
+  margin: 0 0 12px;
+  color: #bdc4ce;
+  font-size: 10px;
+}
+
+.answer-files {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.answer-files a {
+  padding: 7px 10px;
+  border: 1px solid rgba(98, 217, 161, 0.24);
+  border-radius: 8px;
+  color: var(--success);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.workbook-next {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.workbook-next h2 {
+  margin: 4px 0;
+  font-size: 18px;
+}
+
+.workbook-next p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 10px;
 }
 
 .project-highlight {
@@ -1712,6 +2055,19 @@ a {
   .resource-card-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .workbook-flow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .workbook-flow > div:nth-child(3) {
+    border-top: 1px solid var(--border);
+    border-left: 0;
+  }
+
+  .workbook-flow > div:nth-child(4) {
+    border-top: 1px solid var(--border);
+  }
 }
 
 @media (max-width: 820px) {
@@ -1787,6 +2143,15 @@ a {
     grid-template-columns: 1fr;
   }
 
+  .workbook-grid,
+  .workbook-deliverables {
+    grid-template-columns: 1fr;
+  }
+
+  .task-block ol {
+    grid-template-columns: 1fr;
+  }
+
   .article-item {
     grid-template-columns: auto minmax(0, 1fr);
   }
@@ -1857,6 +2222,12 @@ a {
     flex-direction: column;
   }
 
+  .stage-workbook-action,
+  .workbook-next {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
   .resource-stage-head {
     grid-template-columns: auto 1fr;
   }
@@ -1868,6 +2239,21 @@ a {
   .learning-resource-card,
   .learning-resource-card.compact {
     grid-template-columns: 58px minmax(0, 1fr);
+  }
+
+  .workbook-flow {
+    grid-template-columns: 1fr;
+  }
+
+  .workbook-flow > div,
+  .workbook-flow > div:nth-child(3),
+  .workbook-flow > div:nth-child(4) {
+    border-top: 1px solid var(--border);
+    border-left: 0;
+  }
+
+  .workbook-flow > div:first-child {
+    border-top: 0;
   }
 
   .project-card {

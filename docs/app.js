@@ -167,6 +167,7 @@
     if (!raw) return { name: "dashboard" };
     const [name, id] = raw.split("/");
     if (name === "stage" && DATA.stages.some((stage) => stage.id === id)) return { name, id };
+    if (name === "workbook" && DATA.workbooks?.[id]) return { name, id };
     if (["dashboard", "resources", "practice", "projects", "writing", "progress"].includes(name)) return { name };
     return { name: "dashboard" };
   }
@@ -182,6 +183,7 @@
     const names = {
       dashboard: "学习总览",
       resources: "中文资料",
+      workbook: "阶段学习单",
       practice: "习题测验",
       projects: "项目实战",
       writing: "知乎专栏",
@@ -191,6 +193,7 @@
       const stage = DATA.stages.find((item) => item.id === route.id);
       return `学习路径 / ${stage.number} ${stage.shortTitle}`;
     }
+    if (route.name === "workbook") return "学习路径 / 第一阶段 / 可执行学习单";
     return names[route.name] || names.dashboard;
   }
 
@@ -219,10 +222,11 @@
     const route = routeFromHash();
     document.querySelector("#breadcrumbs").textContent = breadcrumb(route);
     document.querySelectorAll(".primary-nav .nav-item").forEach((item) => {
-      item.classList.toggle("active", item.dataset.route === route.name);
+      item.classList.toggle("active", item.dataset.route.split("/")[0] === route.name);
     });
 
     if (route.name === "stage") renderStage(route.id);
+    else if (route.name === "workbook") renderWorkbook(route.id);
     else if (route.name === "resources") renderResources();
     else if (route.name === "practice") renderPractice();
     else if (route.name === "projects") renderProjects();
@@ -338,6 +342,7 @@
           <h1>${escapeHTML(stage.title)}</h1>
           <p>${escapeHTML(stage.description)}</p>
           <div class="stage-meta"><span class="tag">${escapeHTML(stage.duration)}</span><span class="tag">产出：${escapeHTML(stage.outcome)}</span></div>
+          ${DATA.workbooks?.[stage.id] ? `<div class="stage-workbook-action"><button class="button button-primary" type="button" data-route="workbook/${stage.id}">打开可执行学习单 <span>→</span></button><small>含指定章节、练习数据、参考答案和验收标准</small></div>` : ""}
           <div class="stage-progress-row"><div class="progress-track"><span style="width:${progress.percent}%"></span></div><strong>${progress.percent}%</strong></div>
         </div>
       </section>
@@ -419,6 +424,70 @@
             </div>
           </section>`).join("")}
       </div>`;
+  }
+
+  function renderWorkbook(stageId) {
+    const workbook = DATA.workbooks[stageId];
+    const stage = DATA.stages.find((item) => item.id === stageId);
+    view.innerHTML = `
+      <section class="workbook-hero ${toneClass(stage)}">
+        <div class="eyebrow">STAGE ${stage.number} · GUIDED WORKBOOK</div>
+        <h1>${escapeHTML(workbook.title)}</h1>
+        <p>${escapeHTML(workbook.subtitle)}</p>
+        <div class="workbook-notice"><span>使用方法</span>${escapeHTML(workbook.notice)}</div>
+      </section>
+
+      <section class="workbook-flow" aria-label="学习单流程">
+        ${workbook.units.map((unit) => `<div><strong>${unit.number}</strong><span>${escapeHTML(unit.title)}</span><small>${escapeHTML(unit.time)}</small></div>`).join("")}
+      </section>
+
+      <div class="workbook-units">
+        ${workbook.units.map((unit) => `
+          <article class="workbook-unit ${toneClass(stage)}">
+            <header class="workbook-unit-head">
+              <div class="workbook-unit-number">${unit.number}</div>
+              <div><div class="eyebrow">LEARNING UNIT · ${escapeHTML(unit.time)}</div><h2>${escapeHTML(unit.title)}</h2><p>${escapeHTML(unit.goal)}</p></div>
+            </header>
+
+            <div class="workbook-grid">
+              <section class="workbook-block">
+                <h3>带着问题学习</h3>
+                <ol>${unit.questions.map((item) => `<li>${escapeHTML(item)}</li>`).join("")}</ol>
+              </section>
+              <section class="workbook-block source-block">
+                <h3>只看这些中文内容</h3>
+                <div class="unit-sources">${unit.sources.map((source, index) => `
+                  <a href="${escapeHTML(source.url)}" target="_blank" rel="noreferrer"><span>资料 ${index + 1}</span><strong>${escapeHTML(source.title)}</strong><small>${escapeHTML(source.scope)}</small></a>`).join("")}
+                </div>
+              </section>
+            </div>
+
+            <section class="workbook-block task-block">
+              <h3>看完马上做</h3>
+              <ol>${unit.steps.map((step) => `<li><span>${escapeHTML(step)}</span></li>`).join("")}</ol>
+              ${unit.files?.length ? `<div class="workbook-files">${unit.files.map((file) => `<a href="${escapeHTML(file.url)}" target="_blank" rel="noreferrer">${escapeHTML(file.title)} <span>↓</span></a>`).join("")}</div>` : ""}
+            </section>
+
+            <section class="workbook-deliverables">
+              <div><span>必须提交</span>${unit.deliverables.map((item) => `<strong>${escapeHTML(item)}</strong>`).join("")}</div>
+              <div><span>通过标准</span>${unit.acceptance.map((item) => `<strong>✓ ${escapeHTML(item)}</strong>`).join("")}</div>
+            </section>
+
+            <details class="answer-panel">
+              <summary><span>先独立完成，再看${escapeHTML(unit.answer.label)}</span><small>展开参考答案 ↓</small></summary>
+              <div class="answer-content">
+                <p>参考答案不是唯一业务结论，重点检查你的判断链是否完整：</p>
+                <ul>${unit.answer.points.map((point) => `<li>${escapeHTML(point)}</li>`).join("")}</ul>
+                ${unit.answer.files?.length ? `<div class="answer-files">${unit.answer.files.map((file) => `<a href="${escapeHTML(file.url)}" target="_blank" rel="noreferrer">${escapeHTML(file.title)} <span>→</span></a>`).join("")}</div>` : ""}
+              </div>
+            </details>
+          </article>`).join("")}
+      </div>
+
+      <section class="section workbook-next card">
+        <div><div class="eyebrow">AFTER ALL FOUR UNITS</div><h2>完成以后再参加阶段测验</h2><p>测验检查生产边界判断；35 道完整题的参考答案和 Go 代码已经放入学习单。</p></div>
+        <button class="button button-primary" type="button" data-route="practice">开始第一阶段测验 →</button>
+      </section>`;
   }
 
   function taskHTML(task) {

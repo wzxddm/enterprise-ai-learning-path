@@ -15,8 +15,11 @@
 | 顺序 | 类型 / 难度 | 中文资料 | 本阶段只学 | 学完产出 |
 |---|---|---|---|---|
 | 第 1 步 | 中文文档 / 入门 | [阿里云百炼：什么是模型服务平台百炼](https://help.aliyun.com/zh/model-studio/what-is-model-studio) | 模型、API、应用编排和企业模型服务平台，不钻 SDK 细节 | “模型—应用—业务系统—评测治理”四层图 |
-| 第 2 步 | 中文教程 / 入门实践 | [Datawhale：动手学大模型应用开发](https://datawhalechina.github.io/llm-universe/) | 大模型简介、模型 API、Prompt 工程和结构化输出 | Token、采样、Prompt 与 JSON 输出实验 |
-| 第 3 步 | 中文课程 / 进阶实践 | [书生浦语大模型实战营](https://github.com/InternLM/Tutorial) | 只学“大模型及 InternLM 概述”和“提示词工程” | 工单助手提示词契约、失败测试和复盘 |
+| 第 2 步 | 中文教程 / 入门实践 | [Datawhale：动手学大模型应用开发](https://datawhalechina.github.io/llm-universe/) | 第一章；第二章基本概念与 Prompt Engineering；第五章评估入门 | Token、采样、Prompt 版本与字段稳定性实验 |
+| 第 3 步 | 中文视频 / 进阶实践 | [书生浦语：浦语提示词工程实践](https://www.bilibili.com/video/BV1tjS7YfEWJ/) | 结构化提示词部分，跳过无关文案案例 | 工单任务的角色、目标、约束、流程和输出契约 |
+| 第 4 步 | 中文任务 / 动手训练 | [书生浦语：提示词工程任务文档](https://github.com/InternLM/Tutorial/tree/camp4/docs/L1/Prompt) | 结构化提示词练习，再进入工单数据实验 | 三个 Prompt、实验 CSV、校验器与失败复盘 |
+
+配套入口：[第一阶段可执行学习单](../01-llm-basics/workbook.md) · [20 条中文种子工单](../docs/downloads/stage-1/tickets-seed.jsonl) · [Go 参考校验器](../01-llm-basics/lab/reference/validator.go) · [35 题参考答案](../01-llm-basics/answer-key.md)
 
 阶段验收：完成可评测的客服工单分诊助手、50～100 条测试集、质量/延迟/成本报告和两篇知乎文章草稿。
 
